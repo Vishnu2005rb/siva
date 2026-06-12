@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - NK Dairy Products</title>
+    <meta name="description" content="View detailed information about NK Dairy premium cow ghee products. Pure, natural and certified quality.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand" onclick="location.href='index.html'" style="cursor:pointer;">
+                <i class="fas fa-store"></i>
+                <span>NK Dairy Products</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html" class="active">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <button onclick="checkLoginAndRedirect()" class="btn-login" id="userBtn">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="pd-breadcrumb">
+        <div class="container">
+            <span onclick="location.href='index.html'"><i class="fas fa-home"></i> Home</span>
+            <i class="fas fa-chevron-right"></i>
+            <span onclick="location.href='products.html'">Products</span>
+            <i class="fas fa-chevron-right"></i>
+            <span id="breadcrumbName" class="active">Product Detail</span>
+        </div>
+    </div>
+
+    <!-- Product Detail Section -->
+    <section class="pd-section">
+        <div class="container">
+            <div class="pd-layout" id="productDetailLayout">
+                <!-- Loading state -->
+                <div class="pd-loading" id="pdLoading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading product details...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="pd-related">
+        <div class="container">
+            <h2>You May Also Like</h2>
+            <div class="products-grid" id="relatedProducts"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 NK Dairy Products. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="product-detail.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+@import '../styles.css';
+
+/* Keyframe animations for Toast messages */
+@keyframes slideInToast {
+  from {
+    transform: translate(-50%, -20px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+/* React specific routing and utility styling fixes */
+a {
+  text-decoration: none;
+}
+
+.pd-breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+/* Ensure toast animation works properly */
+.auth-toast {
+  animation: slideInToast 0.3s ease-out;
+}

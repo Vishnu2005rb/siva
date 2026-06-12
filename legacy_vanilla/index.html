@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NK Dairy Products - 100% Pure Cow Ghee | Madurai</title>
+    <meta name="description" content="NK Dairy Products offers 100% pure cow ghee made using traditional Bilona methods. Lab certified, no preservatives. Order online for home delivery across India.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand" onclick="location.href='index.html'" style="cursor: pointer;">
+                <i class="fas fa-store"></i>
+                <span>NK Dairy Products</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <button onclick="checkLoginAndRedirect()" class="btn-login" id="userBtn">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fas fa-award"></i> FSSAI Certified • 100% Natural</div>
+                <h1>Pure &amp; Natural<br><span class="hero-highlight">Cow Ghee</span></h1>
+                <p>Experience the authentic taste of traditionally crafted ghee from NK Dairy Products — rich in nutrients, free from preservatives, made with love from Madurai.</p>
+                <div class="hero-btns">
+                    <button onclick="location.href='products.html'" class="btn-primary"><i class="fas fa-shopping-bag"></i> Shop Now</button>
+                    <button onclick="location.href='about.html'" class="btn-outline"><i class="fas fa-play-circle"></i> Our Story</button>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat"><span class="stat-num">10+</span><span class="stat-label">Years of Trust</span></div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat"><span class="stat-num">5000+</span><span class="stat-label">Happy Customers</span></div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat"><span class="stat-num">100%</span><span class="stat-label">Pure Ghee</span></div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-img-wrapper">
+                    <img src="images/ghee_500ml.png" alt="NK Dairy Pure Cow Ghee" class="hero-product-img">
+                    <div class="hero-img-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Banner -->
+    <section class="trust-banner">
+        <div class="container">
+            <div class="trust-item"><i class="fas fa-leaf"></i><span>No Preservatives</span></div>
+            <div class="trust-item"><i class="fas fa-certificate"></i><span>Lab Certified</span></div>
+            <div class="trust-item"><i class="fas fa-truck"></i><span>Pan India Delivery</span></div>
+            <div class="trust-item"><i class="fas fa-undo"></i><span>Easy Returns</span></div>
+            <div class="trust-item"><i class="fas fa-shield-alt"></i><span>Secure Payment</span></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="feature-card">
+                <div class="feature-icon-wrap"><i class="fas fa-leaf"></i></div>
+                <h3>100% Pure</h3>
+                <p>Made from fresh cow milk using traditional Bilona method</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-wrap"><i class="fas fa-certificate"></i></div>
+                <h3>Certified Quality</h3>
+                <p>FSSAI lab tested, certified and approved for safety</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-wrap"><i class="fas fa-truck"></i></div>
+                <h3>Home Delivery</h3>
+                <p>Fast delivery across India right to your doorstep</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-wrap"><i class="fas fa-shield-alt"></i></div>
+                <h3>Secure Payment</h3>
+                <p>100% safe transactions with multiple payment options</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Premium Ghee Products</h2>
+                <p class="section-subtitle">From small packs to bulk orders — pure ghee for every need</p>
+            </div>
+            <div class="products-grid" id="featuredProducts">
+                <!-- Products will be loaded dynamically -->
+            </div>
+            <div class="text-center" style="margin-top: 2.5rem;">
+                <button onclick="location.href='products.html'" class="btn-secondary"><i class="fas fa-th-large"></i> View All Products</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Customers Say</h2>
+                <p class="section-subtitle">Trusted by thousands of families across India</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"The best ghee I've ever tasted! The aroma is amazing and it reminds me of homemade ghee from my grandmother's kitchen. Highly recommended!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">P</div>
+                        <div><strong>Priya S.</strong><span>Chennai</span></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"We order 2L every month for our family. The quality is consistent and delivery is always on time. Pure, authentic ghee at a great price!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">R</div>
+                        <div><strong>Rajesh K.</strong><span>Madurai</span></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <p>"Ordered the 500ml jar — absolutely love it. You can really taste the difference from store-bought ghee. Will be a regular customer!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div><strong>Ananya M.</strong><span>Coimbatore</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/916381743091?text=Hi%20NK%20Dairy%2C%20I%20want%20to%20order%20ghee!" 
+       class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo"><i class="fas fa-store"></i> NK Dairy Products</div>
+                    <p>Pure, authentic cow ghee crafted with traditional methods for over a decade. Trusted by families across India.</p>
+                    <div class="footer-social">
+                        <a href="https://wa.me/916381743091" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:nk.dairyproducts@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:+916381743091"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="cart.html">My Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="products.html">Ghee 50ml</a></li>
+                        <li><a href="products.html">Ghee 100ml</a></li>
+                        <li><a href="products.html">Ghee 200ml</a></li>
+                        <li><a href="products.html">Ghee 500ml</a></li>
+                        <li><a href="products.html">Ghee 1L &amp; 2L</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> JJ Nagar, Sivagangai East Ring Road, Pandikovil, Madurai, Tamil Nadu</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+916381743091">+91 63817 43091</a></p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+917092244067">+91 70922 44067</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:nk.dairyproducts@gmail.com">nk.dairyproducts@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 NK Dairy Products. All rights reserved. | FSSAI Lic. No: 12423012002470</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - NK Dairy Products</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand" onclick="location.href='index.html'" style="cursor: pointer;">
+                <i class="fas fa-store"></i>
+                <span>NK Dairy Products</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Form -->
+    <section class="auth-section">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-logo"><i class="fas fa-store"></i></div>
+                <h2>Welcome Back</h2>
+                <p class="auth-subtitle">Login with your registered email</p>
+
+                <!-- Google Sign-In Button -->
+                <div class="google-signin-wrap">
+                    <div id="g_id_onload"
+                         data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                         data-context="signin"
+                         data-callback="handleGoogleSignIn"
+                         data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin"
+                         data-type="standard"
+                         data-size="large"
+                         data-theme="outline"
+                         data-text="signin_with"
+                         data-shape="rectangular"
+                         data-logo_alignment="left"
+                         data-width="100%">
+                    </div>
+                    <!-- Fallback custom Google button -->
+                    <button class="btn-social btn-google" id="googleBtn" onclick="signInWithGoogle()">
+                        <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google" width="20" height="20">
+                        Continue with Google
+                    </button>
+                </div>
+
+                <div class="auth-divider"><span>OR login with email</span></div>
+
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your registered email">
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-block">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </form>
+
+                <p class="auth-footer">
+                    Don't have an account? <a href="register.html">Sign up free</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script src="firebase-config.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

@@ -17,62 +17,89 @@ const paymentRoutes = require('./routes/payment');
 // Initialize Express app
 const app = express();
 
+
+// =======================
 // Middleware
-app.use(cors());
+// =======================
+
+app.use(cors({
+    origin: "*", // later replace with Cloudflare frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files
-app.use(express.static(path.join(__dirname)));
 
+// =======================
 // API Routes
+// =======================
+
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/payment', paymentRoutes);
 
-// Root route
+
+// =======================
+// Test Route
+// =======================
+
 app.get('/api', (req, res) => {
     res.json({
-        message: 'NK Dairy Products API',
+        success: true,
+        message: 'NK Dairy Products API Running',
         version: '1.0.0',
         endpoints: {
             auth: '/api/auth',
             products: '/api/products',
             orders: '/api/orders',
-            users: '/api/users'
+            users: '/api/users',
+            payment: '/api/payment'
         }
     });
 });
 
-// MongoDB connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/nk-dairy-products';
 
-mongoose.connect(MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-.then(() => {
-    console.log('✅ Connected to MongoDB');
-})
-.catch((error) => {
-    console.error('❌ MongoDB connection error:', error);
-});
+// =======================
+// MongoDB Atlas Connection
+// =======================
 
-// Error handling middleware
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        console.log('✅ Connected to MongoDB Atlas');
+    })
+    .catch((error) => {
+        console.error('❌ MongoDB Error:', error);
+    });
+
+
+// =======================
+// Error Handler
+// =======================
+
 app.use((err, req, res, next) => {
+
     console.error(err.stack);
+
     res.status(500).json({
         success: false,
-        message: 'Something went wrong!',
+        message: 'Server Error',
         error: err.message
     });
+
 });
 
-// Start server
+
+// =======================
+// Start Server
+// =======================
+
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
-    console.log(`📊 API available at http://localhost:${PORT}/api`);
+    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`📊 API: /api`);
 });

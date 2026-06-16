@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
+import { api } from '../utils/api';
 // Helper to dynamically load the Razorpay Checkout script if it hasn't loaded yet
 const loadRazorpayScript = () => {
   return new Promise((resolve) => {
@@ -360,7 +361,7 @@ export default function Checkout() {
             <div id="paymentForm" style={{ background: 'white', padding: '30px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }}>
               <h2 style={{ marginBottom: '20px' }}>Select Payment Method</h2>
               <form onSubmit={handlePlaceOrder} className="checkout-form">
-                
+
                 {/* Method Radios */}
                 <div className="payment-options" style={{ display: 'flex', flexDirection: 'column', gap: '15px', marginBottom: '30px' }}>
                   <label className="payment-option-label" style={{ display: 'flex', alignItems: 'center', padding: '15px', border: '1px solid #ddd', borderRadius: '8px', cursor: 'pointer', background: paymentMethod === 'razorpay' ? '#fff9f0' : 'white', borderColor: paymentMethod === 'razorpay' ? '#ff9800' : '#ddd' }}>
@@ -425,7 +426,7 @@ export default function Checkout() {
           <div className="checkout-summary">
             <div className="summary-card" style={{ background: 'white', padding: '25px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }}>
               <h3 style={{ marginBottom: '20px' }}>Order Summary</h3>
-              
+
               {/* Checkout Items */}
               <div id="orderItems" style={{ display: 'flex', flexDirection: 'column', gap: '15px', marginBottom: '20px', maxHeight: '300px', overflowY: 'auto', paddingRight: '5px' }}>
                 {checkoutItems.map(item => (

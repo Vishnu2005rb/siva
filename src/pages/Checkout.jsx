@@ -432,7 +432,7 @@ export default function Checkout() {
                 {checkoutItems.map(item => (
                   <div key={item.id} className="order-item" style={{ display: 'flex', alignItems: 'center', gap: '15px', borderBottom: '1px solid #eee', paddingBottom: '12px' }}>
                     <div className="order-item-image" style={{ width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f9f9f9', borderRadius: '5px' }}>
-                      <img src={`/${item.image}`} alt={item.name} style={{ width: '40px', height: '40px', objectFit: 'contain' }} onError={(e) => {
+                      <img src={item.image?.startsWith('http') ? item.image : `/${item.image}`} alt={item.name} style={{ width: '40px', height: '40px', objectFit: 'contain' }} onError={(e) => {
                         e.target.style.display = 'none';
                         e.target.nextElementSibling.style.display = 'flex';
                       }} />

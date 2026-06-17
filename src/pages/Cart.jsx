@@ -55,7 +55,7 @@ export default function Cart() {
                 <div key={item.id} className="cart-item">
                   <div className="cart-item-image">
                     <img
-                      src={`/${item.image}`}
+                      src={item.image?.startsWith('http') ? item.image : `/${item.image}`}
                       alt={item.name}
                       style={{ width: '80px', height: '80px', objectFit: 'contain' }}
                       onError={(e) => {

@@ -6,7 +6,7 @@ export const products = [
     size: "50ml",
     description: "Pure cow ghee made from organic milk",
     rating: 4.5,
-    image: "images/ghee_50ml.png"
+    image: "https://res.cloudinary.com/ds0td5fre/image/upload/v1781690578/ghee_50ml_kxjir0.jpg"
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const products = [
     size: "100ml",
     description: "Pure cow ghee made from organic milk",
     rating: 4.6,
-    image: "images/ghee_100ml.png"
+    image: "https://res.cloudinary.com/ds0td5fre/image/upload/v1781690573/ghee_100ml_zthxry.jpg"
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ export const products = [
     size: "200ml",
     description: "Pure cow ghee made from organic milk",
     rating: 4.5,
-    image: "images/ghee_200ml.png"
+    image: "https://res.cloudinary.com/ds0td5fre/image/upload/v1781690576/ghee_200ml_jf5dli.jpg"
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ export const products = [
     size: "500ml",
     description: "Pure cow ghee made from organic milk",
     rating: 4.7,
-    image: "images/ghee_500ml.png"
+    image: "https://res.cloudinary.com/ds0td5fre/image/upload/v1781690576/ghee_500ml_nkbrpr.jpg"
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ export const products = [
     size: "1l",
     description: "Pure cow ghee made from organic milk",
     rating: 4.8,
-    image: "images/ghee_1l.png"
+    image: "https://res.cloudinary.com/ds0td5fre/image/upload/v1781690574/ghee_1l_qpbrwy.jpg"
   },
   {
     id: 6,
@@ -51,7 +51,7 @@ export const products = [
     size: "2l",
     description: "Pure cow ghee made from organic milk",
     rating: 4.9,
-    image: "images/ghee_2l.png"
+    image: "https://res.cloudinary.com/ds0td5fre/image/upload/v1781690576/ghee_2l_uaexey.jpg"
   },
   {
     id: 7,
@@ -60,6 +60,6 @@ export const products = [
     size: "5l",
     description: "Pure cow ghee made from organic milk",
     rating: 4.9,
-    image: "images/ghee_2l.png"
+    image: "https://res.cloudinary.com/ds0td5fre/image/upload/v1781690576/ghee_2l_uaexey.jpg"
   }
 ];

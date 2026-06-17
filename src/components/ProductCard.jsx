@@ -73,7 +73,7 @@ export default function ProductCard({ product }) {
 
           <img
 
-            src={product.image}
+            src={product.image?.startsWith('http') ? product.image : `/${product.image}`}
 
             alt={product.name}
 

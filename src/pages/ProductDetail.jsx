@@ -115,7 +115,7 @@ export default function ProductDetail() {
             <div className="pd-image-main">
               {!imageError ? (
                 <img
-                  src={`/${product.image}`}
+                  src={product.image?.startsWith('http') ? product.image : `/${product.image}`}
                   alt={product.name}
                   onError={() => setImageError(true)}
                 />

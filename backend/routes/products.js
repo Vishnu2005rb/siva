@@ -96,10 +96,7 @@ router.post(
     async (req, res) => {
 
 
-        console.log("====================");
-        console.log("BODY DATA:", req.body);
-        console.log("IMAGE DATA:", req.file);
-        console.log("====================");
+
 
 
         try {

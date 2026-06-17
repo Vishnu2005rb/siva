@@ -197,4 +197,122 @@ router.post(
 
 
 
+// ==========================
+// Update product + Cloudinary image upload
+// PUT /api/products/:id
+// ==========================
+
+router.put(
+    '/:id',
+    upload.single("image"),
+
+    async (req, res) => {
+
+
+        try {
+
+
+            const {
+                name,
+                description,
+                price,
+                size,
+                category,
+                stock,
+                rating,
+                isActive
+            } = req.body;
+
+
+
+            let updateData = {};
+
+
+            if (name !== undefined) updateData.name = name;
+
+            if (description !== undefined) updateData.description = description;
+
+            if (price !== undefined) updateData.price = Number(price);
+
+            if (size !== undefined) updateData.size = size;
+
+            if (category !== undefined) updateData.category = category;
+
+            if (stock !== undefined) updateData.stock = Number(stock);
+
+            if (rating !== undefined) updateData.rating = Number(rating);
+
+            if (isActive !== undefined) {
+
+                updateData.isActive = isActive === 'true' || isActive === true;
+
+            }
+
+
+            if (req.file) {
+
+                updateData.image = req.file.path;
+
+            }
+
+
+
+            const product = await Product.findByIdAndUpdate(
+                req.params.id,
+                updateData,
+                { new: true }
+            );
+
+
+
+            if (!product) {
+
+
+                return res.status(404).json({
+
+                    success: false,
+
+                    message: "Product not found"
+
+                });
+
+
+            }
+
+
+
+            res.json({
+
+                success: true,
+
+                product
+
+            });
+
+
+
+        } catch (error) {
+
+
+            console.log("UPDATE PRODUCT ERROR:", error);
+
+
+            res.status(400).json({
+
+                success: false,
+
+                message: error.message
+
+            });
+
+
+        }
+
+    }
+
+);
+
+
+
+
 module.exports = router;

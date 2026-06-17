@@ -46,6 +46,13 @@ export default function Navbar() {
               Contact
             </NavLink>
           </li>
+          {user && user.role === 'admin' && (
+            <li>
+              <NavLink to="/admin" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => isActive ? 'active' : ''}>
+                Admin
+              </NavLink>
+            </li>
+          )}
         </ul>
         <div className="nav-actions">
           <Link to="/cart" className="cart-icon" style={{ textDecoration: 'none' }}>

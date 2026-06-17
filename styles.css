@@ -129,6 +129,10 @@ body {
     gap: 20px;
 }
 
+.mobile-menu-toggle {
+    display: none;
+}
+
 .cart-icon {
     position: relative;
     font-size: 24px;
@@ -1217,8 +1221,33 @@ body {
         position: static;
     }
     
+    .mobile-menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: var(--text-dark);
+        cursor: pointer;
+        padding: 5px;
+    }
+    
     .nav-menu {
         display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--bg-white);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        padding: 20px;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        border-top: 1px solid var(--border-color);
+    }
+    
+    .nav-menu.open {
+        display: flex;
     }
 }
 

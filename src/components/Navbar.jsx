@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
@@ -7,6 +7,7 @@ export default function Navbar() {
   const { user, logout } = useAuth();
   const { getCartItemCount } = useCart();
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleUserClick = () => {
     if (user) {
@@ -24,24 +25,24 @@ export default function Navbar() {
           <i className="fas fa-store"></i>
           <span>NK Dairy Products</span>
         </Link>
-        <ul className="nav-menu">
+        <ul className={`nav-menu ${isMenuOpen ? 'open' : ''}`}>
           <li>
-            <NavLink to="/" className={({ isActive }) => isActive ? 'active' : ''}>
+            <NavLink to="/" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => isActive ? 'active' : ''}>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/products" className={({ isActive }) => isActive ? 'active' : ''}>
+            <NavLink to="/products" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => isActive ? 'active' : ''}>
               Products
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" className={({ isActive }) => isActive ? 'active' : ''}>
+            <NavLink to="/about" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => isActive ? 'active' : ''}>
               About
             </NavLink>
           </li>
           <li>
-            <NavLink to="/contact" className={({ isActive }) => isActive ? 'active' : ''}>
+            <NavLink to="/contact" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => isActive ? 'active' : ''}>
               Contact
             </NavLink>
           </li>
@@ -53,6 +54,9 @@ export default function Navbar() {
           </Link>
           <button onClick={handleUserClick} className="btn-login">
             {user ? user.name : 'Login'}
+          </button>
+          <button className="mobile-menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle Menu">
+            <i className={isMenuOpen ? "fas fa-times" : "fas fa-bars"}></i>
           </button>
         </div>
       </div>

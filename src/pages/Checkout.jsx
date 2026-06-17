@@ -241,7 +241,7 @@ export default function Checkout() {
           </div>
         </div>
 
-        <div className="checkout-layout" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '40px' }}>
+        <div className="checkout-content">
           {/* Shipping Form Panel */}
           {step === 'shipping' && (
             <div id="shippingForm" style={{ background: 'white', padding: '30px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }}>

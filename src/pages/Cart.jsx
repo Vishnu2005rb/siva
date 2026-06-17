@@ -48,7 +48,7 @@ export default function Cart() {
             </Link>
           </div>
         ) : (
-          <div className="cart-layout" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '30px', marginTop: '30px' }}>
+          <div className="cart-content" style={{ marginTop: '30px' }}>
             {/* Cart Items List */}
             <div id="cartItems" className="cart-items" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               {cart.map(item => (

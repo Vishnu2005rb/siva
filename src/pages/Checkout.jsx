@@ -158,7 +158,9 @@ export default function Checkout() {
 
         // Configure and open Razorpay Checkout modal
         const options = {
-          key: 'rzp_test_T0k8hRrpfw9IiQ', // Razorpay Test Key ID
+
+          // Razorpay Live Key from Cloudflare ENV
+          key: import.meta.env.VITE_RAZORPAY_KEY_ID,
           amount: razorpayOrderRes.amount,
           currency: razorpayOrderRes.currency,
           name: 'NK Dairy Products',

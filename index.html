@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://checkout.razorpay.com" />
   <link rel="preconnect" href="https://res.cloudinary.com" />
 
-  <!-- DNS Prefetching as Fallback -->
+  <!-- DNS Prefetching -->
   <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
   <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
@@ -22,45 +22,63 @@
   <!-- Google Search Console Verification -->
   <meta name="google-site-verification" content="ZYH4Pmmps72gPDg4tSc7Gx0AfbkuWeMUVLXBYljy8EI" />
 
-  <!-- Default Static Meta (Will be dynamically overridden by React Helmet) -->
+  <!-- Website Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
+  <link rel="shortcut icon" href="/favicon.png" />
+
+  <!-- SEO -->
   <title>NK Dairy Products | Buy Premium Pure Cow Ghee Online</title>
-  <meta name="description" content="Buy 100% Pure Cow Ghee directly from NK Dairy Products. Premium quality traditional ghee made with natural ingredients. Home delivery across India." />
-  <meta name="keywords" content="NK Dairy Products, NK Ghee, Pure Cow Ghee Madurai, Buy Ghee Online, Homemade Ghee, Traditional Ghee" />
+
+  <meta name="description"
+    content="Buy 100% Pure Cow Ghee directly from NK Dairy Products. Premium quality traditional ghee made with natural ingredients. Home delivery across India." />
+
+  <meta name="keywords"
+    content="NK Dairy Products, NK Ghee, Pure Cow Ghee Madurai, Buy Ghee Online, Homemade Ghee, Traditional Ghee" />
+
   <meta name="author" content="NK Dairy Products" />
   <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#c99a2e" />
 
-  <!-- Google Analytics 4 (GA4) Tag (uses Vite environment variables injection) -->
+  <!-- Google Analytics 4 -->
   <script>
-    (function() {
+    (function () {
       const gaId = "%VITE_GA_MEASUREMENT_ID%";
+
       if (gaId && gaId !== "%" + "VITE_GA_MEASUREMENT_ID" + "%") {
-        const script = document.createElement('script');
+        const script = document.createElement("script");
         script.async = true;
-        script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+        script.src =
+          "https://www.googletagmanager.com/gtag/js?id=" + gaId;
+
         document.head.appendChild(script);
 
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+
         window.gtag = gtag;
-        gtag('js', new Date());
-        gtag('config', gaId, { send_page_view: false }); // Handled by React router dynamically
+
+        gtag("js", new Date());
+
+        gtag("config", gaId, {
+          send_page_view: false,
+        });
       }
     })();
   </script>
 
-  <!-- Optimized Non-Render-Blocking FontAwesome CSS -->
-  <link 
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    media="print"
-    onload="this.media='all'"
-  />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print"
+    onload="this.media='all'" />
 
-  <!-- Fonts with display=swap for Page Speed -->
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" 
-    rel="stylesheet"
-  />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
 
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -68,19 +86,15 @@
 
   <!-- Razorpay -->
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-</head>
 
+</head>
 
 <body>
 
   <div id="root"></div>
 
-
-  <script 
-    type="module" 
-    src="/src/main.jsx">
+  <script type="module" src="/src/main.jsx">
   </script>
-
 
 </body>
 

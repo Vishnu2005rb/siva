@@ -36,10 +36,15 @@ function parseFrontmatter(rawText) {
       }
     };
 
+    let openBrackets = 0;
+    let openBraces = 0;
+
     lines.forEach(line => {
+      const trimmedLine = line.trim();
+      const isNewKeyCandidate = !trimmedLine.startsWith('-') && openBrackets === 0 && openBraces === 0;
+
       const colonIndex = line.indexOf(':');
-      // If it has a colon and is not part of a list element or JSON structure
-      if (colonIndex !== -1 && !line.trim().startsWith('-') && !line.trim().startsWith('{') && !line.trim().startsWith('[')) {
+      if (colonIndex !== -1 && isNewKeyCandidate) {
         if (currentKey) {
           saveKeyValuePair(currentKey, currentValueStr);
         }
@@ -49,6 +54,14 @@ function parseFrontmatter(rawText) {
         if (currentKey) {
           currentValueStr += '\n' + line;
         }
+      }
+
+      // Track brackets and braces to support multi-line JSON arrays and maps
+      for (let i = 0; i < line.length; i++) {
+        if (line[i] === '[') openBrackets++;
+        if (line[i] === ']') openBrackets--;
+        if (line[i] === '{') openBraces++;
+        if (line[i] === '}') openBraces--;
       }
     });
 

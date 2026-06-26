@@ -2,14 +2,42 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { products } from '../productsData';
 import ProductCard from '../components/ProductCard';
+import SEO from '../components/SEO/SEO';
+import { OrganizationSchema, LocalBusinessSchema, FAQSchema } from '../components/SEO/JsonLd';
 
 export default function Home() {
   const navigate = useNavigate();
   const [heroImageError, setHeroImageError] = useState(false);
   const featuredProducts = products.slice(0, 4);
 
+  const faqs = [
+    {
+      question: "What is the Bilona ghee method?",
+      answer: "The Bilona method is a traditional Indian way of making ghee. Fresh cow milk is boiled and set to curd. The curd is then churned using a wooden churner (Bilona) to obtain butter (makkhan). This butter is then slowly heated to produce aromatic, nutrient-rich, and pure cow ghee."
+    },
+    {
+      question: "Is NK Dairy cow ghee 100% pure and natural?",
+      answer: "Yes, NK Dairy cow ghee is 100% pure, natural, and FSSAI certified. We do not use any preservatives, colors, or chemical additives in our ghee-making process."
+    },
+    {
+      question: "Does NK Dairy ship products across India?",
+      answer: "Yes, we offer fast doorstep delivery across all states in India. Shipping is free on all orders above ₹500."
+    },
+    {
+      question: "How should I store NK Dairy cow ghee?",
+      answer: "NK Dairy cow ghee has a long shelf life. Keep it stored in a cool, dry place away from direct sunlight. There is no need to refrigerate the ghee; it stays fresh at room temperature."
+    }
+  ];
+
   return (
     <div>
+      <SEO
+        title="NK Dairy Products | Buy Premium Pure Cow Ghee Online"
+        description="Buy 100% Pure Cow Ghee directly from NK Dairy Products. Premium quality traditional ghee made with natural ingredients. Home delivery across India."
+      />
+      <OrganizationSchema />
+      <LocalBusinessSchema />
+      <FAQSchema faqs={faqs} />
       {/* Hero Section */}
       <section className="hero">
         <div className="container">
@@ -186,6 +214,29 @@ export default function Home() {
                 <div><strong>Ananya M.</strong><span>Coimbatore</span></div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="faq-section" style={{ padding: '60px 0', background: '#fafafa', borderTop: '1px solid #f0f0f0' }}>
+        <div className="container">
+          <div className="section-header" style={{ marginBottom: '40px', textAlign: 'center' }}>
+            <h2 style={{ fontSize: '2rem', margin: '0 0 10px 0' }}>Frequently Asked Questions</h2>
+            <p className="section-subtitle">Got questions? We have answers about our premium cow ghee</p>
+          </div>
+          <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            {faqs.map((faq, index) => (
+              <div key={index} className="faq-item" style={{ background: 'white', padding: '25px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.03)', textAlign: 'left' }}>
+                <h3 style={{ fontSize: '1.2rem', color: 'var(--text-dark)', marginBottom: '10px', display: 'flex', gap: '10px', alignItems: 'flex-start', margin: '0 0 10px 0' }}>
+                  <i className="fas fa-question-circle" style={{ color: '#ff9800', marginTop: '3px' }}></i>
+                  <span>{faq.question}</span>
+                </h3>
+                <p style={{ color: '#666', lineHeight: '1.6', fontSize: '0.95rem', margin: 0, paddingLeft: '28px' }}>
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

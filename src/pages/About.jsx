@@ -1,8 +1,20 @@
 import React from 'react';
+import SEO from '../components/SEO/SEO';
+import { BreadcrumbSchema } from '../components/SEO/JsonLd';
 
 export default function About() {
   return (
     <section className="about-page" style={{ padding: '40px 0' }}>
+      <SEO
+        title="About NK Dairy Products"
+        description="Learn about NK Dairy Products, our history of producing premium quality pure cow ghee, and our commitment to purity and tradition in Madurai."
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'About', url: '/about' }
+        ]}
+      />
       <div className="container">
         <h1>About NK Dairy Products</h1>
 

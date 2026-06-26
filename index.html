@@ -2,103 +2,72 @@
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta 
-    name="viewport" 
-    content="width=device-width, initial-scale=1.0" 
-  />
+  <!-- Preconnect to Third-Party Hosts for Speed -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://checkout.razorpay.com" />
+  <link rel="preconnect" href="https://res.cloudinary.com" />
 
+  <!-- DNS Prefetching as Fallback -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+  <link rel="dns-prefetch" href="https://checkout.razorpay.com" />
+  <link rel="dns-prefetch" href="https://res.cloudinary.com" />
 
   <!-- Google Search Console Verification -->
-  <meta 
-    name="google-site-verification" 
-    content="ZYH4Pmmps72gPDg4tSc7Gx0AfbkuWeMUVLXBYljy8EI" 
-  />
+  <meta name="google-site-verification" content="ZYH4Pmmps72gPDg4tSc7Gx0AfbkuWeMUVLXBYljy8EI" />
 
+  <!-- Default Static Meta (Will be dynamically overridden by React Helmet) -->
+  <title>NK Dairy Products | Buy Premium Pure Cow Ghee Online</title>
+  <meta name="description" content="Buy 100% Pure Cow Ghee directly from NK Dairy Products. Premium quality traditional ghee made with natural ingredients. Home delivery across India." />
+  <meta name="keywords" content="NK Dairy Products, NK Ghee, Pure Cow Ghee Madurai, Buy Ghee Online, Homemade Ghee, Traditional Ghee" />
+  <meta name="author" content="NK Dairy Products" />
+  <meta name="robots" content="index, follow" />
 
-  <!-- SEO TITLE -->
-  <title>
-    NK Dairy Products | Pure Cow Ghee Online | Madurai
-  </title>
+  <!-- Google Analytics 4 (GA4) Tag (uses Vite environment variables injection) -->
+  <script>
+    (function() {
+      const gaId = "%VITE_GA_MEASUREMENT_ID%";
+      if (gaId && gaId !== "%" + "VITE_GA_MEASUREMENT_ID" + "%") {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+        document.head.appendChild(script);
 
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', gaId, { send_page_view: false }); // Handled by React router dynamically
+      }
+    })();
+  </script>
 
-  <!-- SEO DESCRIPTION -->
-  <meta 
-    name="description"
-    content="NK Dairy Products Madurai - Buy 100% pure cow ghee online. Traditional homemade ghee, natural dairy products with doorstep delivery."
-  />
-
-
-  <!-- SEO KEYWORDS -->
-  <meta 
-    name="keywords"
-    content="NK Dairy Products, NK Ghee, Pure Cow Ghee Madurai, Buy Ghee Online, Homemade Ghee, Traditional Ghee"
-  />
-
-
-  <meta 
-    name="author"
-    content="NK Dairy Products"
-  />
-
-
-  <meta 
-    name="robots"
-    content="index, follow"
-  />
-
-
-  <!-- Social Media Preview -->
-  <meta 
-    property="og:title"
-    content="NK Dairy Products - Pure Cow Ghee"
-  />
-
-
-  <meta 
-    property="og:description"
-    content="Order pure traditional cow ghee online from NK Dairy Products."
-  />
-
-
-  <meta 
-    property="og:type"
-    content="website"
-  />
-
-
-  <meta 
-    property="og:url"
-    content="https://nk-dairy-products.pages.dev"
-  />
-
-
-  <!-- Font Awesome -->
+  <!-- Optimized Non-Render-Blocking FontAwesome CSS -->
   <link 
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    media="print"
+    onload="this.media='all'"
   />
 
-
-  <!-- Fonts -->
+  <!-- Fonts with display=swap for Page Speed -->
   <link 
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" 
     rel="stylesheet"
   />
 
-
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-
 
   <!-- Razorpay -->
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
-
 </head>
 
 

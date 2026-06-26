@@ -1,8 +1,20 @@
 import React from 'react';
+import SEO from '../components/SEO/SEO';
+import { BreadcrumbSchema } from '../components/SEO/JsonLd';
 
 export default function Contact() {
   return (
     <section className="contact-page" style={{ padding: '40px 0' }}>
+      <SEO
+        title="Contact NK Dairy Products"
+        description="Get in touch with NK Dairy Products. Phone, Email, and physical address details for our premium cow ghee and dairy products in Madurai, India."
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Contact', url: '/contact' }
+        ]}
+      />
       <div className="container">
         <h1>Contact Us</h1>
         <p className="section-subtitle">We'd love to hear from you. Get in touch with us!</p>

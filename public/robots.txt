@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /checkout
+Disallow: /order-confirmation
+Disallow: /login
+Disallow: /cart
 
 Sitemap: https://nk-dairy-products.pages.dev/sitemap.xml

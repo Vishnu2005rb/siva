@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { api } from '../utils/api';
+import SEO from '../components/SEO/SEO';
 
 export default function AdminDashboard() {
   const { user, showToast } = useAuth();
@@ -173,6 +174,11 @@ export default function AdminDashboard() {
 
   return (
     <div className="admin-dashboard-page" style={{ padding: '40px 0', minHeight: 'calc(100vh - 200px)' }}>
+      <SEO
+        title="Admin Control Panel | NK Dairy Products"
+        description="Administrative settings for NK Dairy Products ghee shop management."
+        robots="noindex, nofollow"
+      />
       <div className="container">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px', flexWrap: 'wrap', gap: '15px' }}>
           <div>

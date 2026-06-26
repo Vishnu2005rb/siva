@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { optimizeCloudinaryUrl } from '../utils/cloudinary';
 
 export default function ProductCard({ product }) {
 
@@ -73,9 +74,9 @@ export default function ProductCard({ product }) {
 
           <img
 
-            src={product.image?.startsWith('http') ? product.image : `/${product.image}`}
+            src={optimizeCloudinaryUrl(product.image?.startsWith('http') ? product.image : `/${product.image}`)}
 
-            alt={product.name}
+            alt={`${product.name} - NK Dairy Products`}
 
             loading="lazy"
 

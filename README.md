@@ -1,210 +1,197 @@
-# NK Groups - Premium Ghee E-Commerce Website
+# NK Dairy & Ghee E-Commerce Platform
 
-A complete e-commerce website for selling premium ghee products online with authentication, shopping cart, checkout, and payment processing.
+A premium, full-stack MERN (MongoDB, Express, React, Node.js) e-commerce application for selling premium dairy and ghee products. Built with **Vite + React** for a state-driven, dynamic user interface, and **Express + Mongoose** on the backend for robust, secure processing and administration.
 
-## Features
+---
 
-### 🔐 Authentication System
-- User registration with validation
-- Login/Logout functionality
-- Password confirmation
-- User session management
-- Social login UI (Google & Facebook)
+## 🌟 Modern Upgrades (Vanilla HTML vs. MERN Stack)
 
-### 🛍️ Shopping Experience
-- Product catalog with 8 premium ghee products
-- Product filtering by size (500ml, 1L, 2L, 5L)
-- Product sorting (price, name)
-- Star ratings for products
-- Responsive product cards with images
+The project has been migrated from a static, client-only demo using LocalStorage to a fully integrated **MERN stack** solution:
+* **Dynamic Frontend**: Migrated from individual HTML files to a single-page React app (React 19, React Router v7) with state management contexts (`AuthContext`, `CartContext`).
+* **Robust Backend**: Node/Express server providing production-ready REST APIs.
+* **Persistent Database**: Switched to MongoDB Atlas/Mongoose for reliable product, user, and order storage.
+* **Payment Ready**: Integrated APIs for both automated **Razorpay gateway verification** and zero-fee **Direct UPI QR/UTR** flows.
+* **Admin Control**: Added an interactive administration dashboard to manage inventories, active statuses, track orders, and view sales details.
+* **Automated Asset Seeding**: Support for Cloudinary product asset uploading and database seeding.
 
-### 🛒 Shopping Cart
-- Add to cart functionality
-- Update quantities (+/-)
-- Remove items
-- Cart badge with item count
-- Real-time price calculations
-- Free delivery on orders above ₹500
+---
 
-### 💳 Checkout & Payment
-- Multi-step checkout process
-- Shipping information form
-- Multiple payment methods:
-  - Credit/Debit Card
-  - UPI
-  - Net Banking
-  - Cash on Delivery
-- Order summary sidebar
-- Tax calculation (5%)
-- Delivery charges
+## 🏗️ Architecture & Stack
 
-### 📦 Order Management
-- Order confirmation page
-- Unique order ID generation
-- Order details display
-- Email confirmation notification
-- Estimated delivery date
+### Frontend (Client)
+- **Vite & React 19** – Ultrafast development and client rendering
+- **React Router Dom (v7)** – Declarative component-based routing
+- **Context API** – Global contexts for authentication status and cart state
+- **CSS3 & custom animations** – Modern layout styling (importing `styles.css`)
+- **Font Awesome Icons** – Premium aesthetic components
+- **Firebase SDK** – Initialized configuration setup
 
-## Pages
+### Backend (Server)
+- **NodeJS & Express** – REST API routing and middleware pipelines
+- **Mongoose (MongoDB)** – Object modeling for user, order, and product schemas
+- **JWT & bcryptjs** – State-free session tokens and secure password hashing
+- **Cloudinary & Multer** – Cloud-based media uploads for product management
+- **Nodemailer** – SMTP-triggered transactional email alerts
+- **Razorpay SDK** – Webhook-ready dynamic order APIs
 
-1. **index.html** - Home page with hero section, features, and featured products
-2. **products.html** - Full product catalog with filters and sorting
-3. **cart.html** - Shopping cart with item management
-4. **login.html** - User login page
-5. **register.html** - User registration page
-6. **checkout.html** - Multi-step checkout process
-7. **order-confirmation.html** - Order success page
+---
 
-## Files Structure
+## 📁 Directory Structure
 
 ```
-├── index.html              # Home page
-├── products.html           # Products catalog
-├── cart.html              # Shopping cart
-├── login.html             # Login page
-├── register.html          # Registration page
-├── checkout.html          # Checkout process
-├── order-confirmation.html # Order confirmation
-├── styles.css             # All styling
-├── script.js              # Main JavaScript
-├── auth.js                # Authentication logic
-├── cart.js                # Cart management
-├── products.js            # Product display
-├── checkout.js            # Checkout process
-├── confirmation.js        # Order confirmation
-└── README.md              # This file
+├── backend/
+│   ├── config/              # Configuration (Cloudinary, etc.)
+│   ├── middleware/          # JWT authorization and role checks
+│   ├── models/              # Mongoose schemas (User, Product, Order)
+│   ├── routes/              # Express API endpoints
+│   ├── .env                 # Server secrets & DB configuration
+│   ├── server.js            # Main backend application entry point
+│   ├── seedProducts.js      # Populates catalog from static templates
+│   └── fetchDataToMarkdown.js # Generates offline DATABASE_DATA.md logs
+│
+├── src/
+│   ├── assets/              # Icons and general media files
+│   ├── components/          # Reusable layout UI (Navbar, Footer, Floating WhatsApp)
+│   ├── context/             # Global states (AuthContext, CartContext)
+│   ├── pages/               # React pages (Home, Products, Detail, Admin, Checkout)
+│   ├── utils/               # Axios/fetch backend handlers
+│   ├── main.jsx             # React DOM bootstrapper
+│   └── App.jsx              # Routing map and context providers
+│
+├── legacy_vanilla/          # Archived original HTML/JS/CSS client demo
+├── styles.css               # Core CSS layout rules
+├── index.html               # Main Vite HTML loader entry
+├── vite.config.js           # Vite server settings
+└── README.md                # This file
 ```
 
-## Technologies Used
+---
 
-- **HTML5** - Structure
-- **CSS3** - Styling with CSS Grid and Flexbox
-- **Vanilla JavaScript** - All functionality
-- **LocalStorage** - Data persistence
-- **Font Awesome** - Icons
+## 🚀 Installation & Local Setup
 
-## Design Features
+### 📋 Prerequisites
+- **Node.js** (v16+ recommended)
+- **MongoDB** (Local Community Server or MongoDB Atlas cloud connection URI)
 
-- ✨ Light theme with orange/amber color scheme
-- 📱 Fully responsive design
-- 🎨 Clean and modern UI
-- ⚡ Smooth animations and transitions
-- 🔔 Toast notifications
-- 💫 Hover effects
+---
 
-## How to Use
+### 1️⃣ Backend Server Configuration
 
-1. **Open the website**
-   - Open `index.html` in your browser
+1. Navigate to the `backend` directory:
+   ```bash
+   cd backend
+   ```
+2. Install server dependencies:
+   ```bash
+   npm install
+   ```
+3. Create a `.env` file in the `backend/` directory using the following keys:
+   ```env
+   PORT=3000
+   MONGO_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_signing_secret
+   FRONTEND_URL=http://localhost:5173
 
-2. **Browse Products**
-   - View featured products on home page
-   - Visit Products page for full catalog
-   - Filter by size or sort by price/name
+   # Email Alerts (Optional SMTP config)
+   EMAIL_HOST=smtp.gmail.com
+   EMAIL_PORT=587
+   EMAIL_USER=your_email@gmail.com
+   EMAIL_PASSWORD=your_app_password
+   EMAIL_FROM="NK Dairy Products <noreply@nkdairy.com>"
 
-3. **Add to Cart**
-   - Click "Add" button on any product
-   - View cart badge update in navigation
+   # Payments
+   RAZORPAY_KEY_ID=your_razorpay_key_id
+   RAZORPAY_KEY_SECRET=your_razorpay_key_secret
 
-4. **Register/Login**
-   - Click "Login" in navigation
-   - Register new account or login
-   - All data stored in browser LocalStorage
+   # Cloudinary Media Storage (Optional)
+   CLOUDINARY_CLOUD_NAME=your_cloudinary_name
+   CLOUDINARY_API_KEY=your_api_key
+   CLOUDINARY_API_SECRET=your_api_secret
+   ```
+4. Seed the database with the default ghee catalog:
+   ```bash
+   node seedProducts.js
+   ```
+5. Run the server in development mode:
+   ```bash
+   npm run dev
+   ```
 
-5. **Checkout**
-   - View cart and proceed to checkout
-   - Fill shipping information
-   - Select payment method
-   - Place order
+---
 
-6. **Order Confirmation**
-   - View order details
-   - Get unique order ID
-   - See estimated delivery date
+### 2️⃣ Frontend Setup
 
-## Product Catalog
+1. Return to the project root directory:
+   ```bash
+   cd ..
+   ```
+2. Install frontend dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the Vite development server:
+   ```bash
+   npm run dev
+   ```
+4. Access the application in your browser at: `http://localhost:5173`
 
-The website includes 8 premium ghee products:
+---
 
-1. Premium Cow Ghee - 500ml (₹450)
-2. Premium Cow Ghee - 1L (₹850)
-3. Premium Cow Ghee - 2L (₹1650)
-4. Premium Cow Ghee - 5L (₹4000)
-5. A2 Desi Cow Ghee - 500ml (₹600)
-6. A2 Desi Cow Ghee - 1L (₹1150)
-7. Organic Ghee - 500ml (₹550)
-8. Organic Ghee - 1L (₹1050)
+## 💳 Payment Integrations (UPI Options)
 
-## Key Features Explained
+The system is configured to support two modes of UPI payment processing (detailed in [UPI_PAYMENT_REQUIREMENTS.md](file:///c:/Users/sathy/OneDrive/Desktop/siva/siva%20product/UPI_PAYMENT_REQUIREMENTS.md)):
 
-### Cart Management
-- Persistent cart using LocalStorage
-- Real-time updates
-- Quantity controls
-- Price calculations with tax and delivery
+### Option 1: Razorpay Payment Gateway (Automated)
+- **Flow**: Launches the Razorpay checkout overlay. Customers pay via dynamic QR code, card, net banking, or auto-selected UPI app.
+- **Verification**: Automatic backend verification through signature validations. The database updates order status instantly.
+- **Setup**: Requires adding `RAZORPAY_KEY_ID` and `RAZORPAY_KEY_SECRET` in `backend/.env`.
 
-### User Authentication
-- Client-side authentication
-- Secure password storage
-- Session management
-- Protected checkout (login required)
+### Option 2: Direct UPI QR Code & Deep-Linking (Manual / Free)
+- **Flow**: Mobile users open GPay, PhonePe, or Paytm via deep links. Desktop users scan a dynamically rendered QR code.
+- **Verification**: Zero gateway MDR transaction fee. Customers input their 12-digit **UTR (UPI Ref Number)** in checkout. Admins verify this code inside the dashboard.
+- **Setup**: Define merchant VPA ID and name inside the checkout configurations.
 
-### Responsive Design
-- Mobile-first approach
-- Breakpoints: 576px, 768px, 992px
-- Flexible grid layouts
-- Touch-friendly buttons
+---
 
-### Order Processing
-- 3-step checkout flow
-- Form validation
-- Payment method selection
-- Order confirmation with unique ID
+## 📊 Database Models & Seeding
 
-## Browser Compatibility
+### Seeding Catalog
+Run `node backend/seedProducts.js` to clear and re-initialize product collections. 
 
-- Chrome (recommended)
-- Firefox
-- Safari
-- Edge
-- Opera
+### Current Catalog Inventory
+The catalog is defined inside `DATABASE_DATA.md` and contains the following pre-configured options:
+* Premium Cow Ghee - 50ml (₹40)
+- Premium Cow Ghee - 100ml (₹80)
+- Premium Cow Ghee - 200ml (₹150)
+- Premium Cow Ghee - 500ml (₹375)
+- Premium Cow Ghee - 1L (₹750)
+- Premium Cow Ghee - 2L (₹1500)
+- Premium Cow Ghee - 5L (₹3750)
 
-## Notes
+To update the offline product catalog preview, run:
+```bash
+node backend/fetchDataToMarkdown.js
+```
 
-- This is a front-end demo using LocalStorage
-- No actual payment processing
-- For production, integrate:
-  - Backend API
-  - Real payment gateway (Razorpay, Stripe, etc.)
-  - Database for users and orders
-  - Email service for notifications
-  - Order tracking system
+---
 
-## Future Enhancements
+## 🔐 Administrative Access
 
-- User profile page
-- Order history
-- Product reviews
-- Wishlist functionality
-- Admin dashboard
-- Real-time inventory
-- Email notifications
-- OTP verification
-- Password reset
-- Address book
-- Multiple addresses
-- Coupon codes
-- Product search
+The application features a secure, dedicated Admin Dashboard at the `/admin` path:
+* **Analytics Bar**: Quick metrics showing total sales, completed orders, pending orders, and total registered users.
+* **Product Manager**: Active toggling (Active/Inactive) of products in store catalog, updating inventory stock, and creating products with custom image urls.
+* **Order Tracking**: Order lifecycle updates (Pending ➔ Processing ➔ Out for Delivery ➔ Delivered / Cancelled) along with manual UTR verification logs for direct UPI.
 
-## Contact
+---
 
-For NK Groups:
-- Phone: +91 1234567890
-- Email: info@nkgroups.com
-- Location: India
+## 📞 Business Information & Support
+
+For queries or custom business orders:
+- **Email**: info@nkgroups.com
+- **Phone**: +91 1234567890
+- **Location**: India
 
 ---
 
 **© 2026 NK Groups. All rights reserved.**
-
-Made with ❤️ for premium ghee lovers
+*Pure premium ghee crafted with care for health and taste.*

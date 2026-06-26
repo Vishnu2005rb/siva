@@ -2,13 +2,14 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { products } from '../productsData';
 import ProductCard from '../components/ProductCard';
 import { api } from '../utils/api';
+import SEO from '../components/SEO/SEO';
+import { BreadcrumbSchema } from '../components/SEO/JsonLd';
 
 export default function Products() {
   const [sizeFilter, setSizeFilter] = useState('all');
   const [sortFilter, setSortFilter] = useState('default');
   const [searchQuery, setSearchQuery] = useState('');
   const [productsList, setProductsList] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -26,8 +27,6 @@ export default function Products() {
       } catch (error) {
         console.error('Failed to fetch products from backend, using static fallback:', error);
         setProductsList(products);
-      } finally {
-        setLoading(false);
       }
     };
     loadProducts();
@@ -69,6 +68,16 @@ export default function Products() {
 
   return (
     <section className="products-page">
+      <SEO
+        title="Premium Cow Ghee Collection | NK Dairy Products"
+        description="Browse our collection of Premium Cow Ghee available in multiple sizes with secure online ordering."
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Products', url: '/products' }
+        ]}
+      />
       <div className="container">
         <div className="section-header">
           <h1>Our Premium Products</h1>

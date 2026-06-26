@@ -1,0 +1,2 @@
+# Redirect sitemap requests to backend server
+/sitemap.xml https://nk-dairy-backend.onrender.com/sitemap.xml 301

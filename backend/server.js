@@ -20,6 +20,7 @@ const productRoutes = require('./routes/products');
 const orderRoutes = require('./routes/orders');
 const userRoutes = require('./routes/users');
 const paymentRoutes = require('./routes/payment');
+const sitemapRoutes = require('./routes/sitemap');
 
 
 // =======================
@@ -106,6 +107,12 @@ app.use(
 app.use(
     '/api/payment',
     paymentRoutes
+);
+
+
+app.use(
+    '/sitemap.xml',
+    sitemapRoutes
 );
 
 

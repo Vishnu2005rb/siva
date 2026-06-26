@@ -5,6 +5,9 @@ import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import ProductCard from '../components/ProductCard';
 import { api } from '../utils/api';
+import SEO from '../components/SEO/SEO';
+import { ProductSchema, BreadcrumbSchema } from '../components/SEO/JsonLd';
+import { optimizeCloudinaryUrl } from '../utils/cloudinary';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -99,6 +102,34 @@ export default function ProductDetail() {
 
   return (
     <div className="product-detail-page" style={{ padding: '40px 0' }}>
+      {product && (
+        <>
+          <SEO
+            title={`Buy ${product.name} Online | NK Dairy Products`}
+            description={`Buy ${product.name} for ₹${product.price}. 100% Pure Cow Ghee with secure delivery across India.`}
+            ogImage={product.image?.startsWith('http') ? product.image : `${window.location.origin}/${product.image}`}
+            ogType="product"
+            ogTitle={`Buy ${product.name} Online | NK Dairy Products`}
+            ogDescription={`Buy ${product.name} for ₹${product.price}. 100% Pure Cow Ghee with secure delivery across India.`}
+          />
+          <ProductSchema
+            name={product.name}
+            description={product.description}
+            price={product.price}
+            image={product.image?.startsWith('http') ? product.image : `${window.location.origin}/${product.image}`}
+            size={product.size}
+            rating={product.rating}
+            stock={product.stock}
+          />
+          <BreadcrumbSchema
+            items={[
+              { name: 'Home', url: '/' },
+              { name: 'Products', url: '/products' },
+              { name: product.name, url: `/product/${product.id}` }
+            ]}
+          />
+        </>
+      )}
       <div className="container">
         {/* Breadcrumbs */}
         <div className="pd-breadcrumbs" style={{ marginBottom: '30px', fontSize: '0.9rem', color: '#666' }}>
@@ -115,8 +146,8 @@ export default function ProductDetail() {
             <div className="pd-image-main">
               {!imageError ? (
                 <img
-                  src={product.image?.startsWith('http') ? product.image : `/${product.image}`}
-                  alt={product.name}
+                  src={optimizeCloudinaryUrl(product.image?.startsWith('http') ? product.image : `/${product.image}`)}
+                  alt={`${product.name} - NK Dairy Products`}
                   onError={() => setImageError(true)}
                 />
               ) : (

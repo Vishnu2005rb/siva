@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
+const fs = require('fs');
 const Product = require('../models/Product');
 
 router.get('/', async (req, res) => {
@@ -14,6 +16,7 @@ router.get('/', async (req, res) => {
     const staticPaths = [
       { path: '', priority: '1.0', changefreq: 'daily' },
       { path: '/products', priority: '0.9', changefreq: 'daily' },
+      { path: '/blog', priority: '0.9', changefreq: 'daily' },
       { path: '/about', priority: '0.7', changefreq: 'monthly' },
       { path: '/contact', priority: '0.7', changefreq: 'monthly' }
     ];
@@ -34,6 +37,22 @@ router.get('/', async (req, res) => {
       xml += '    <priority>0.8</priority>\n';
       xml += '  </url>\n';
     });
+
+    // Dynamic Blog Detail pages
+    const blogsDir = path.join(__dirname, '../../src/content/blogs');
+    if (fs.existsSync(blogsDir)) {
+      const files = fs.readdirSync(blogsDir);
+      files.forEach(file => {
+        if (file.endsWith('.md')) {
+          const slug = file.replace('.md', '');
+          xml += '  <url>\n';
+          xml += `    <loc>${baseUrl}/blog/${slug}</loc>\n`;
+          xml += '    <changefreq>weekly</changefreq>\n';
+          xml += '    <priority>0.8</priority>\n';
+          xml += '  </url>\n';
+        }
+      });
+    }
 
     xml += '</urlset>';
 

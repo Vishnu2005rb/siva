@@ -21,6 +21,10 @@ import AdminDashboard from './pages/AdminDashboard';
 // Initialize firebase configs
 import './firebase-config';
 
+// Lazy-loaded blog pages for performance optimization
+const Blog = React.lazy(() => import('./pages/Blog'));
+const BlogDetail = React.lazy(() => import('./pages/BlogDetail'));
+
 // Analytics Tracker Component for Single Page App Pageviews
 function AnalyticsTracker() {
   const location = useLocation();
@@ -60,6 +64,18 @@ export default function App() {
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Register />} />
                   <Route path="/admin" element={<AdminDashboard />} />
+                  
+                  {/* Blog Module Routes */}
+                  <Route path="/blog" element={
+                    <React.Suspense fallback={<div className="container" style={{ padding: '80px 20px', textAlign: 'center' }}><h3>Loading Blog Feed...</h3></div>}>
+                      <Blog />
+                    </React.Suspense>
+                  } />
+                  <Route path="/blog/:slug" element={
+                    <React.Suspense fallback={<div className="container" style={{ padding: '80px 20px', textAlign: 'center' }}><h3>Loading Article...</h3></div>}>
+                      <BlogDetail />
+                    </React.Suspense>
+                  } />
                 </Routes>
               </main>
 

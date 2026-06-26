@@ -150,3 +150,39 @@ export function FAQSchema({ faqs = [] }) {
     </Helmet>
   );
 }
+
+export function ArticleSchema({ title, description, image, date, author = 'NK Dairy Products', slug }) {
+  const currentUrl = `https://nk-dairy-products.pages.dev/blog/${slug}`;
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    'headline': title,
+    'image': [image],
+    'datePublished': date,
+    'dateModified': date,
+    'author': [{
+      '@type': 'Organization',
+      'name': author,
+      'url': 'https://nk-dairy-products.pages.dev'
+    }],
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'NK Dairy Products',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://res.cloudinary.com/ds0td5fre/image/upload/v1781690574/ghee_1l_qpbrwy.jpg'
+      }
+    },
+    'description': description,
+    'mainEntityOfPage': {
+      '@type': 'WebPage',
+      '@id': currentUrl
+    }
+  };
+
+  return (
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+    </Helmet>
+  );
+}

@@ -4,11 +4,14 @@ import { products } from '../productsData';
 import ProductCard from '../components/ProductCard';
 import SEO from '../components/SEO/SEO';
 import { OrganizationSchema, LocalBusinessSchema, FAQSchema } from '../components/SEO/JsonLd';
+import { getAllBlogs } from '../utils/markdown';
+import BlogCard from '../components/BlogCard';
 
 export default function Home() {
   const navigate = useNavigate();
   const [heroImageError, setHeroImageError] = useState(false);
   const featuredProducts = products.slice(0, 4);
+  const latestBlogs = getAllBlogs().slice(0, 3);
 
   const faqs = [
     {
@@ -154,6 +157,28 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Latest Blogs Section */}
+      {latestBlogs.length > 0 && (
+        <section className="featured-products" style={{ background: '#fffcf5', borderTop: '1px solid #fff3e0', borderBottom: '1px solid #fff3e0', padding: '60px 0' }}>
+          <div className="container">
+            <div className="section-header">
+              <h2>Latest From Our Blog</h2>
+              <p className="section-subtitle">Read health tips, ghee facts, and traditional recipes</p>
+            </div>
+            <div className="blog-grid" style={{ marginBottom: '40px' }}>
+              {latestBlogs.map(blog => (
+                <BlogCard key={blog.slug} blog={blog} />
+              ))}
+            </div>
+            <div className="text-center">
+              <button onClick={() => navigate('/blog')} className="btn-secondary" style={{ display: 'inline-block' }}>
+                <i className="fas fa-newspaper"></i> View All Blogs
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Testimonials Section */}
       <section className="testimonials">

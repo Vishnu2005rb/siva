@@ -37,6 +37,11 @@ export default function Navbar() {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/blog" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => isActive ? 'active' : ''}>
+              Blog
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/about" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => isActive ? 'active' : ''}>
               About
             </NavLink>

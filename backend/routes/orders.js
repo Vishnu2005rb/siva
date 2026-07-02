@@ -91,6 +91,88 @@ router.post('/', protect, async (req, res) => {
     }
 });
 
+// @desc    Get all orders (Admin only)
+// @route   GET /api/orders
+// @access  Private/Admin
+router.get('/', protect, async (req, res) => {
+    try {
+        if (req.user.role !== 'admin') {
+            return res.status(403).json({
+                success: false,
+                message: 'Not authorized as an admin'
+            });
+        }
+
+        const orders = await Order.find({})
+            .populate('user', 'fullname email phone')
+            .populate('items.product', 'name price image')
+            .sort({ createdAt: -1 });
+
+        res.json({
+            success: true,
+            count: orders.length,
+            orders
+        });
+    } catch (error) {
+        console.error('Get All Orders Error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Server error retrieving all orders',
+            error: error.message
+        });
+    }
+});
+
+// @desc    Update order status (Admin only)
+// @route   PUT /api/orders/:id/status
+// @access  Private/Admin
+router.put('/:id/status', protect, async (req, res) => {
+    try {
+        if (req.user.role !== 'admin') {
+            return res.status(403).json({
+                success: false,
+                message: 'Not authorized as an admin'
+            });
+        }
+
+        const { orderStatus } = req.body;
+        if (!orderStatus) {
+            return res.status(400).json({
+                success: false,
+                message: 'Order status is required'
+            });
+        }
+
+        const order = await Order.findById(req.params.id);
+        if (!order) {
+            return res.status(404).json({
+                success: false,
+                message: 'Order not found'
+            });
+        }
+
+        order.orderStatus = orderStatus;
+        if (orderStatus === 'delivered') {
+            order.deliveryDate = new Date();
+        }
+
+        await order.save();
+
+        res.json({
+            success: true,
+            message: `Order status updated to ${orderStatus}`,
+            order
+        });
+    } catch (error) {
+        console.error('Update Order Status Error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Server error updating order status',
+            error: error.message
+        });
+    }
+});
+
 // @desc    Get logged in user orders
 // @route   GET /api/orders/my-orders
 // @access  Private
